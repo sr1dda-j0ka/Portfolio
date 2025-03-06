@@ -20,6 +20,7 @@ body{
     backdrop-filter: blur(10px); /* Blur effect */
     -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
+    
 }
 .Home {
     width: 100%;
@@ -55,18 +56,12 @@ body{
         
     
 }
-.name{
-    margin-left: 1%;
-    width: 50%;
-    align-content: center;
-    color: #0077B6;
+.name {
+    width: auto; /* Prevents unnecessary width */
     display: flex;
+    align-items: center;
     gap: 5px;
-    margin-top: 5px;
-
 }
-
-
 .options {
     display: flex;
     gap: 60px; 
@@ -128,7 +123,8 @@ body{
 
 }
 .projects-section{
-    height: 100vh; 
+    height: auto; 
+    padding: 50px 0; 
 }
 .projects{
     height: 90vh;
@@ -140,12 +136,11 @@ body{
 .projects-heading{
     align-items: center;
 }
-.container{
-    position: relative;
-    width: 250px;
-    height: 320px;
+.container {
+    width: 250px; 
+    height: 320px; 
     background-color: #7B2CBF;
-
+    margin-bottom: 20px; 
 }
 .procard{
     position: relative;
@@ -196,14 +191,15 @@ body{
 }
 .cards{
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;  
+    justify-content: center;
+    gap: 20px; 
 }
 .cards{
     top: 100px;
 }
 .my-icon{
-    color: black;
+    color: #90E0EF;
 }
 .contact-section{
     height: 100vh;
@@ -251,6 +247,10 @@ input, textarea {
     padding: 10px; 
     border-radius: 5px; 
     border: 1px solid #ccc;
+    
+}
+input, textarea {
+    max-width: 100%;
 }
 
 textarea {
@@ -265,3 +265,115 @@ textarea {
     color:#90E0EF;
     cursor: pointer;
 }
+.footer{
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background-color: rgba(10, 25, 47, 0.8);
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.footer i{
+    margin-left: 20px;
+    cursor: pointer;
+}
+.social{
+    
+    margin-top: 10px;
+
+    
+}
+.footer p{
+    margin-top: auto;
+    color:#90E0EF;
+}
+.black-icon{
+    color: black;
+}
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        height: auto;
+        padding: 10px 0;
+        align-items: center;
+    }
+
+    .options {
+        flex-direction: column;
+        gap: 10px; 
+    }
+
+    .navbar a {
+        margin-left: 0;
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+@media screen and (max-width: 768px) {
+    
+       .Home {
+            flex-direction: column;
+            text-align: center;
+            padding: 20px;
+        }
+    
+        .Home img {
+            width: 200px;
+            height: 200px;
+            margin-left: 0;
+        }
+    
+
+    .Home p {
+        max-width: 90%;
+        font-size: 14px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .projects, .skills {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cards {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .container {
+        width: 90%; 
+        height: auto;
+    }
+}
+@media screen and (max-width: 768px) {
+    .contact-form {
+        max-width: 90%;
+        margin-bottom: 100px;
+    }
+
+    input, textarea {
+        width: 100%;
+    }
+
+    .footer {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .social {
+        gap: 15px;
+        font-size: 18px;
+    }
+
+    .footer p {
+        font-size: 12px;
+    }
+}
+
+
