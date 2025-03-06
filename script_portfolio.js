@@ -1,29 +1,46 @@
-document.addEventListener("DOMContentLoaded", function() {
-    emailjs.init("KeGAfbVsEGdTgdWsw"); 
-
-    document.getElementById("contact-form").addEventListener("submit", function(event) {
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById("contact-form").addEventListener("submit", function (event) {
         event.preventDefault(); 
 
-        
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const message = document.getElementById("message").value;
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let message = document.getElementById("message").value.trim();
+        let statusMessage = document.getElementById("status-message");
 
         
-        emailjs.send("service_pf2k73h", "template_vha0p6u", {
-            name: name,
-            email: email,
-            message: message
-        }, "KeGAfbVsEGdTgdWsw") 
-        .then(function(response) {
-            document.getElementById("status-message").innerText = "Email sent successfully!";
-            document.getElementById("status-message").style.color = "green";
+        statusMessage.innerHTML = "";
+        statusMessage.style.color = "black";
 
-            
+       
+        if (name === "") {
+            statusMessage.innerHTML = "⚠ Please enter your name.";
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            statusMessage.innerHTML = "⚠ Please enter a valid email address.";
+            return;
+        }
+
+        if (message === "") {
+            statusMessage.innerHTML = "⚠ Please enter your message.";
+            return;
+        }
+
+        
+        statusMessage.style.color = "green";
+        statusMessage.innerHTML = "✅ Message sent successfully!";
+        
+        
+        setTimeout(() => {
             document.getElementById("contact-form").reset();
-        }, function(error) {
-            document.getElementById("status-message").innerText = "Failed to send email.";
-            document.getElementById("status-message").style.color = "red";
-        });
+            statusMessage.innerHTML = "";
+        }, 2000);
     });
+
+   
+    function validateEmail(email) {
+        let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailPattern.test(email);
+    }
 });
